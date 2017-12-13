@@ -1,0 +1,32 @@
+{% set name = "udunits2" %}
+{% set version = "2.2.25" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/Unidata/UDUNITS-2/archive/v{{ version }}.tar.gz
+  sha256: a57092cc3bb17e4afd07a8728f1562cd40f38e0f399e6a12b19584d9e41cdd8f
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - automake
+    - libtool
+    - texinfo
+    - expat 2.2.*
+  run:
+    - expat 2.2.*
+
+test:
+  commands:
+    - udunits2 -h
+    - udunits2 -H meter -W miles
+
+about:
+  home: http://www.unidata.ucar.edu/software/udunits/
+  license: UCAR OSI approved
+  summary: 'The UDUNITS package supports units of physical quantities.'
