@@ -29,7 +29,8 @@ install:
 - export PATH="$CONDA_PREFIX/bin:$PATH"
 - hash -r
 - conda config --set always_yes yes --set changeps1 no
-- conda install python=$TRAVIS_PYTHON_VERSION
+- conda create -n buildit python=$TRAVIS_PYTHON_VERSION
+- source activate buildit
 - conda install -q conda-build anaconda-client coverage sphinx
 script:
 - conda build ./recipe -c csdms-stack -c defaults -c conda-forge --old-build-string
